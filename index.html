@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h2> Promise HandSon - 3 </h2>
+
+    <p><b>Q1. </b>Write one example explaining how you can write a callback function.</p>
+
+<pre>
+    function calculate( num1,num2){
+        return num1 + num2
+    }
+    function displayData(a, b){
+        console.log(`${a}: age is ${b}`);
+    }
+    displayData ('people', calculate(20,1))
+</pre>
+<p>create one function with 2 parameter return add or mul, and one more create function with two parameter write console statement using $ inside parathesise and calling second function and inside paranthesis calling frist fuction integer number </p>
+
+<p><b>Q2.</b>"Write a callback function to print numbers from 1 to 7, in which 1 should be printed after 1 sec, 2 should be printed after 2 sec, 3 should be printed after 3 sec, and so on. 
+    Explain callback hell.
+    Numbers
+    1 2 3 4 5 6 7" </p>
+    <pre>
+        setTimeout (()=>{
+            console.log("1")
+                setTimeout (()=>{
+                    console.log("2")
+                    setTimeout (()=>{
+                       console.log("3")
+                            setTimeout (()=>{
+                                console.log("4")
+                                    setTimeout (()=>{
+                                         console.log("5")
+                                             setTimeout (()=>{
+                                                 console.log("6")
+                                                    setTimeout (()=>{
+                                                        console.log("7")
+                                                    },7000)
+                                             },6000)
+                                    },5000)
+                            },4000)
+                    },3000)
+               },2000)
+        },1000)
+    </pre>
+    <p><b>Q3.</b>"Write the promise function to print numbers from 1 to 7, in which 1 should be printed after 1 sec, 2 should be printed after 2 sec, 3 should be printed after 3 sec, and so on. 
+
+        Numbers
+        1 2 3 4 5 6 7" </p>
+        <pre>
+            function promisechain (num, timeout){
+                return new Promise ((res,rej) =>{
+                    setTimeout(() =>{
+                        console.log(num);
+                        res( "this promise solved")
+                    },timeout)
+                })
+            }
+            
+            async function visible(){
+                await promisechain('1', 1000)
+                await promisechain('2', 2000)
+                await promisechain('3', 3000)
+                await promisechain('4', 4000)
+                await promisechain('5', 5000)
+                await promisechain('6', 6000)
+                await promisechain('7', 7000)
+             }
+            
+            visible()
+           
+            </pre>
+    <p><b>Q4.</b>Create a promise function accepting an argument, if yes is passed to 
+                the function then it should go to resolved state and print Promise Resolved, 
+        and if nothing is passed 
+        then it should go to reject the state and catch the error and print Promise Rejected 
+         </p>
+         <pre>   
+            let b= 'yes'
+    
+    let mypromise = new Promise((res,rej) =>{
+        if (b === 'yes'){
+            res ('promise Resolved')
+        }else{
+            rej ('promise Rejected')
+        }
+    })
+    mypromise 
+    .then((reject) => console.log(reject))
+    .catch ((error)=> console.log(error))
+         </pre>
+
+         <p> <b>Q5.</b>Create examples to explain callback function<p>
+            <pre>
+                function add(a,b){
+                    return a+b;
+                }
+                function divide(a,b){
+                    return a/b;
+                }
+                function calculate(x,y,operation){
+                    return operation(x,y)
+                }
+                console.log(calculate(2,2,add))
+                console.log(calculate(2,2,divide))
+            </pre>
+
+            <b>we can create frist fuction add second function divide third function calculate operation 
+                then console.log call add function and divide function
+            </b>
+            <p> <b>Q6.</b> Create examples to explain callback hell function</p>
+            <pre>
+                setTimeout (() =>{
+                    console.log("H")
+                    setTimeout(() =>{
+                        console.log('i')
+                        setTimeout(() => {
+                            console.log('!!!')
+                        },3000)
+                    },2000)
+                },1000)
+                <b>A Call back is great way when dealing with basic cases like minimal asynchronous operation </b>
+                <b>print Hi!!! H will take 1sec 'I' will take 2sec, and '!!!" will takes 3 sec</b>
+            </pre>
+            <p> <b>Q7.</b>Create examples to explain promises function</p>
+            <pre>
+                let a = 'arrived';
+                const ride = new Promise((resolve, reject)  => {
+                    if (a =='arrived'){
+                        resolve('Driver arrived 🚗')
+                    }else{
+                        reject ('Driver bailed 😭 ')
+                    }
+                        })
+                    ride
+                .then(value => {   console.log(value)
+                    })
+                .catch(error => {
+                console.log(error)
+                    })
+            </pre>
+            <b></b>
+            <p><b>Q8.</b>Create examples to explain async await function</p>
+            <pre>
+                async function display (alpha, timeout){
+                    setTimeout(() => {
+                        console.log(alpha)
+                    },timeout)
+                }
+                
+                  function visible(){
+                   await display('A' ,2000)
+                   await display('E' ,4000)
+                   await display('I' ,1000)
+                   await display('o' ,2000)
+                   await display('u' ,5000)
+                }
+                visible()
+                
+                <b>Async and wait make promise easier to write. async makes a function return a Promise 
+                    await makes function wait for a Promise </b>
+            </pre>
+            <p><b>Q9.</b>Create examples to explain promise.all function</p>
+            <pre>
+                function abc(num){
+                    return new Promise((res,rej)=>{
+                        if(num % 2 === 0){
+                            res ("Even Number")
+                        }else{
+                            rej ("Odd Number")
+                        }
+                    })
+                }
+                
+                const promiseVariable = new Promise((res,rej) =>{
+                    if(True){
+                        res ('Hi EA23')
+                    }else{
+                        rej ('sorry')
+                    }
+                })
+                
+                Promise.all([abc(10),promiseVariable])
+                .then((data) => console.log(data))
+                .catch((err) => console.log(err))
+            </pre>
+            <b>Promise.all The Promise.all static method takes an iterable of promises as input and returns a single Promise</b>
+</body>
+</html>
